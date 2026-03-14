@@ -1,6 +1,5 @@
 package com.juandi.learningcurve.model.domain.audit;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,8 +14,9 @@ import lombok.ToString;
 public class BaseEntity {
 
   @Version
-  @Column(nullable = false)
-  private static final Long version = 0L;
+  @SuppressWarnings("unused")
+  private Long version;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

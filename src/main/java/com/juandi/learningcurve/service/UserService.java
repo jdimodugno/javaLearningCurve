@@ -8,6 +8,7 @@ import com.juandi.learningcurve.mapper.UserMapper;
 import com.juandi.learningcurve.model.domain.User;
 import com.juandi.learningcurve.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService extends BaseService<User, Long> {
@@ -18,6 +19,7 @@ public class UserService extends BaseService<User, Long> {
     this.repository = repository;
   }
 
+  @Transactional
   public User create(final CreateUserRequest request) {
     if (getRepository().existsByEmail(request.email())) {
       throw new DuplicateResourceException(
@@ -28,6 +30,7 @@ public class UserService extends BaseService<User, Long> {
     return getRepository().save(user);
   }
 
+  @Transactional
   public User update(
       final Long id,
       final UpdateUserRequest request
