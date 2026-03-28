@@ -1,4 +1,10 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
+
+  application:
+    name: learningcurve
+
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
@@ -15,7 +21,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     properties:
       hibernate:
         default_schema: public
@@ -25,4 +31,5 @@ logging:
     org.flywaydb: DEBUG
     org.springframework.boot.autoconfigure.flyway: DEBUG
 
-server: 8080
+server:
+  port: 8080
